@@ -1,7 +1,6 @@
 import { collection, getDoc, getDocs } from 'firebase/firestore';
 import { db } from "../../firebase/config"
 import React, { useContext, useEffect, useState } from 'react'
-import { CartContext } from '../../context/CartContext';
 import { ProductosListado } from './ProductosListado';
 
 export const Productos = () => {

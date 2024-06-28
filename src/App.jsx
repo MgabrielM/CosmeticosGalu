@@ -1,4 +1,5 @@
 
+import { CarritoDetalle } from './components/Compra/CarritoDetalle';
 import { Contacto } from './components/Contacto/Contacto';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
@@ -25,6 +26,7 @@ function App() {
           </Route>
           <Route path="/productos" element={<Productos />}></Route>
           <Route path="/contacto" element={<Contacto />}></Route>
+          <Route path="/carrito" element={<CarritoDetalle />}></Route>
           {/* <Route path="/carritoDetail" element={<CarritoDetail/>}></Route>
           <Route path="/category/:categoryId"  element={<ItemListContainer />}></Route>          
           <Route path="/item/:itemId" element={<ItemDetailContainer/>}></Route>  */}

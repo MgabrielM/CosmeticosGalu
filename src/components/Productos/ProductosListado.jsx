@@ -13,7 +13,7 @@ export const ProductosListado = ({productos}) => {
         <h3>Productos</h3>
           {
           productos ? 
-          productos.slice(0,2).map(prod => (
+          productos.slice(0,5).map(prod => (
           <div className="product-card" key={prod.id}>
               <div className="image-container">
               <img src={`images/${prod.idImagen}.jpg`} alt="Nombre del Producto" className="product-image" />

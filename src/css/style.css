@@ -84,16 +84,17 @@ header{
 }
 
 .contenedor-carrito{
-    width: 45%;
+    width: 90%;
     display: flex;
     justify-content: space-evenly;
     align-self: center;
     background-color: rgb(243, 234, 234);
     border-radius: 40px;
     margin: 20px 0;
-    padding: 5px
+    padding: 5px;
+    color: black;
+    text-decoration: none;
 }
-
 
 .contenedor-carrito svg{
   text-align: center;
@@ -388,3 +389,139 @@ footer{
   form button:hover {
     background-color: red;
   }
+
+  .mensaje-enviado {
+    width: 650px;
+    background-color: #e6ffed; /* Fondo verde claro para indicar aprobación */
+    border: 1px solid #a3d7a5; /* Borde verde suave */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 16px; /* Espaciado interno */
+    margin-top: 16px; /* Margen superior */
+    color: #333; /* Color del texto */
+    font-family: Arial, sans-serif; /* Fuente */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 55vh; /* Margen inferior grande */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .mensaje-enviado p {
+    margin: 0; /* Elimina el margen de los párrafos */
+    line-height: 1.5; /* Altura de línea */
+  }
+  
+  .mensaje-enviado p:first-of-type {
+    font-weight: bold; /* Negrita para el primer párrafo */
+    font-size: 1.2em; /* Tamaño de fuente más grande para el primer párrafo */
+  }
+  
+  .mensaje-enviado p:last-of-type {
+    margin-top: 8px; /* Espacio superior para separar el segundo párrafo */
+    color: #2a5a2a; /* Color verde oscuro para el ID */
+  }
+  .contenedor-carrito-detalle {
+    width: 1200px;
+    max-width: 800px;
+    margin: 5% auto 5% auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .carrito-tabla {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .carrito-fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .carrito-encabezado {
+    background-color: #f3eaea;
+    font-weight: bold;
+  }
+  
+  .carrito-celda {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .carrito-fila:last-child {
+    border-bottom: none;
+  }
+  
+  .carrito-fila:nth-child(even) {
+    background-color: #f0f4f8;
+  }
+  
+  .contenedor-botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .carrito-boton-volver {
+    display: block;
+    width: 45%;
+    padding: 12px 20px;
+    background-color: #f3eaea; /* Color de fondo rojo claro */
+    color: #333; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el color de fondo y sombra */
+  }
+  
+  .carrito-boton-volver:hover {
+    background-color: #e2d6d6; /* Color de fondo al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  }
+  
+  .carrito-boton-volver:active {
+    background-color: #d1c4c4; /* Color de fondo al hacer clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra reducida */
+  }
+  
+  .carrito-boton {
+    display: block;
+    width: 45%;
+    padding: 12px 20px;
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el color de fondo y sombra */
+  }
+  
+  .carrito-boton:hover {
+    background-color: #45a049; /* Color de fondo al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  }
+  
+  .carrito-boton:active {
+    background-color: #3e8e41; /* Color de fondo al hacer clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra reducida */
+  }
+  

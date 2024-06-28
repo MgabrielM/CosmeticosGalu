@@ -50,15 +50,23 @@ export const CartProvider = ({children}) =>{
           for (let i = 0; i < carrito.length; i++){
             cantidad = carrito[i].cantidad + cantidad;
           }
-        }
-  
+        }  
         return cantidad;
       }
 
+      const actualizarPrecioTotal = () =>{
+        let precio = 0;
 
+        if (carrito){
+            for (let i = 0; i < carrito.length; i++){
+              precio = carrito[i].precio + precio;
+            }
+          }  
+        return precio;
+      }
 
     return(
-        <CartContext.Provider value={{guardarItemCarrito, actualizarCantidadCarrito}}>
+        <CartContext.Provider value={{carrito, guardarItemCarrito, actualizarPrecioTotal, actualizarCantidadCarrito}}>
             {children}
         </CartContext.Provider>
     )
