@@ -5,8 +5,6 @@ import { CartContext } from '../../context/CartContext';
 import { ProductosListado } from './ProductosListado';
 
 export const Productos = () => {
-  
-    
 
     const [productos, setProductos] = useState(undefined);
 

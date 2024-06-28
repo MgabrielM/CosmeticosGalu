@@ -84,19 +84,22 @@ header{
 }
 
 .contenedor-carrito{
-    width: 8%;
+    width: 45%;
     display: flex;
     justify-content: space-evenly;
     align-self: center;
     background-color: rgb(243, 234, 234);
     border-radius: 40px;
-    margin: 20px;
+    margin: 20px 0;
     padding: 5px
 }
 
+
 .contenedor-carrito svg{
-    width: 20px;
-    height: 20px;
+  text-align: center;
+  justify-items: center;
+  width: 18px;
+  height: 18px;
 }
 
 .nav-links a {
@@ -270,6 +273,12 @@ footer{
     text-align: center;
     background-color: #fafafa;
     border-top: 1px solid #eeeeee;
+    transition: background-color 2s ease;
+  }
+
+  .product-details:hover{
+    background-color: rgb(239, 229, 208);
+    transition: background-color 1s ease;
   }
   
   .product-name {
