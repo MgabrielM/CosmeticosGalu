@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Timestamp, addDoc, collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { useForm } from 'react-hook-form';
@@ -7,8 +7,23 @@ import { useForm } from 'react-hook-form';
 export const Contacto = () => {
 
     const {register, handleSubmit} = useForm();
+    let [consultaId, setConsultaId] = useState("")
 
     const comprar = (data) =>{
+
+      const contacto = {
+        cliente: data,
+        fechaConsulta: Timestamp.now()
+      }
+
+      const cargarConsulta = collection(db, "contacto");
+      addDoc(cargarConsulta, contacto)
+      .then((res) =>
+        {
+          setConsultaId(res.id);
+        }
+    ) 
+
 
     }
 
@@ -33,6 +48,11 @@ export const Contacto = () => {
             <textarea placeholder="Ingrese su consulta" {...register("consulta")} />
           </div>
           <button type="submit">FINALIZAR COMPRA</button>
+          <div>
+          {
+            consultaId ? "Su mensaje ha sido enviado, !Muchas gracias!"+"(ID de consulta creada: )"+consultaId : ""
+          }
+          </div>
         </form>
       );
     }

@@ -126,14 +126,14 @@ header{
 /* HERO */
 #carouselExampleAutoplaying{
     width: 1200px;
-    height: 450px;
+    height: 350px;
     border-bottom-left-radius: 80px;
     border-bottom-right-radius:  80px;
 }
 
 .carousel-inner{
     width: 1200px;
-    height: 450px;
+    height: 350px;
     position: absolute;
     overflow: hidden;
     border-bottom-left-radius: 30px;
@@ -142,12 +142,12 @@ header{
 
 .carousel-inner img {
     width: 1200px;
-    height: 450px;
+    height: 350px;
     position: absolute;
     top: 50%;
     left: 0%;
     transform: translate(0, 0);
-    object-fit: fill; 
+    object-fit: cover; 
     filter: brightness(0.8); 
 }
 
@@ -171,6 +171,11 @@ footer{
     justify-content: center;
     color: white;
     padding: 25px;
+}
+
+.contenedor-footer a svg {
+  width: 20px;
+  height: 20px;
 }
 
 .nav-link a{
@@ -356,7 +361,7 @@ footer{
     resize: vertical; /* Permite redimensionar verticalmente solo en el caso de textarea */
   }
   
-  button {
+  form button {
     background-color: rgb(255, 87, 87);
     color: white;
     border: none;
@@ -367,6 +372,6 @@ footer{
     transition: background-color 0.3s ease;
   }
   
-  button:hover {
+  form button:hover {
     background-color: red;
   }
