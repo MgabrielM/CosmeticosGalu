@@ -7,11 +7,26 @@ export const CartProvider = ({children}) =>{
  const [carrito, setCarrito] = useState([]);
 
 
-    useEffect(()=>
-        {           
-                        
-        }
-    ), [carrito];
+    const botonMenosCantidadCarrito = (producto) =>{
+      
+      if(producto.cantidad === 1){
+          producto.cantidad --;
+          const nuevoCarrito = carrito.filter(prod => prod.id !== producto.id);
+          setCarrito(nuevoCarrito);
+          return;
+      } else {
+        for (let i = 0; i < carrito.length; i++) {
+          if (carrito[i].id === producto.id) {
+            const nuevoCarrito = [...carrito];
+            nuevoCarrito[i].cantidad--;
+            setCarrito(nuevoCarrito);
+            console.log(nuevoCarrito);
+            return; 
+          }
+        } 
+      }
+    }
+  
 
     const notificacionItemCargado = () => 
         Toastify({
@@ -66,7 +81,7 @@ export const CartProvider = ({children}) =>{
       }
 
     return(
-        <CartContext.Provider value={{carrito, guardarItemCarrito, actualizarPrecioTotal, actualizarCantidadCarrito}}>
+        <CartContext.Provider value={{carrito, botonMenosCantidadCarrito, setCarrito, guardarItemCarrito, actualizarPrecioTotal, actualizarCantidadCarrito}}>
             {children}
         </CartContext.Provider>
     )

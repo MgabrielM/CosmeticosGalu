@@ -1,13 +1,20 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 export const CarritoDetalle = () => {
 
-    let {carrito, actualizarPrecioTotal} = useContext(CartContext);
+    let {carrito, actualizarPrecioTotal, guardarItemCarrito, botonMenosCantidadCarrito} = useContext(CartContext);
 
 
-
-
+    const menosCantidadItem = (producto) =>{
+      botonMenosCantidadCarrito(producto);
+    }
+  
+    const masCantidadItem = (producto) =>{
+      guardarItemCarrito(producto);
+    }
+    
 
   return (
     <div className='contenedor-carrito-detalle'>
@@ -21,7 +28,15 @@ export const CarritoDetalle = () => {
         </div>
         {carrito.map((prod) => (
           <div className='carrito-fila' key={prod.id}>
-            <div className='carrito-celda'>{prod.cantidad}</div>
+            <div className='product-cantidad'>
+                <button onClick={(e) => menosCantidadItem(prod)}>
+                  -
+                </button>
+                <div>{prod.cantidad}</div>
+                <button onClick={(e) => masCantidadItem(prod)}>
+                  +
+                </button>
+              </div>
             <div className='carrito-celda'>{prod.marca}</div>
             <div className='carrito-celda'>{prod.nombre}</div>
             <div className='carrito-celda'>${prod.precio}</div>
@@ -34,7 +49,7 @@ export const CarritoDetalle = () => {
           <div className='carrito-celda'>{actualizarPrecioTotal()}</div>
         </div>
             <div className='contenedor-botones'>
-                <button className='carrito-boton-volver'>Volver</button>
+                <Link to="../../productos">Seguir Comprando</Link>
                 <button className='carrito-boton'>Avanzar con la compra</button>
             </div>
       </div>

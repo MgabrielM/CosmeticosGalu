@@ -23,9 +23,7 @@ export const Contacto = () => {
           setConsultaId(res.id);
         }
     ) 
-
       
-
 
     }
 
@@ -39,7 +37,7 @@ export const Contacto = () => {
         ) : (
           <form className="formulario-compra" onSubmit={handleSubmit(comprar)}>
             <h5>¡Entra en contacto con nosotros!</h5>
-            <p>Es necesario completar el siguiente formulario para poder finalizar la compra</p>
+            <p></p>
             <div className="input-group">
               <h6>Nombre y apellido</h6>
               <input
@@ -71,7 +69,7 @@ export const Contacto = () => {
                 {...register('consulta')}
               />
             </div>
-            <button type="submit">FINALIZAR COMPRA</button>
+            <button type="submit">ENVIAR CONSULTA</button>
           </form>
         )}
       </>

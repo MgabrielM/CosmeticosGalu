@@ -236,6 +236,7 @@ footer{
     padding: 45px 25px; 
   }
   
+  
   .product-card {
     display: flex;
     flex-direction: column;
@@ -302,7 +303,41 @@ footer{
     color: #9b59b6; /* Color para la marca y categoría */
     margin-bottom: 5px;
   }
-  
+
+  .product-cantidad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .product-cantidad div{
+    background-color: white;
+    border: 1px solid gray;
+  }
+
+  .product-cantidad button{
+    background-color: #4CAF50;
+  }
+
+  .button-producto-menos{
+    border-top-left-radius: 15px;
+  } 
+
+  .button-producto-mas{
+    border-top-right-radius: 15px;
+  }     
+
+  .button-producto-menos:hover{
+    background-color: goldenrod;
+  }
+
+
+  .button-producto-mas:hover{
+    background-color: goldenrod;
+  }
+
+
   .add-to-cart {
     background-color:rgb(255, 87, 87);; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
