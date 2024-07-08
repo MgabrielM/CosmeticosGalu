@@ -70,9 +70,9 @@ export const DatosComprador = () => {
             <div className="input-group">
               <h6>N°</h6>
               <input
-                type="tel"
+                type="number"
                 placeholder=""
-                {...register('correo', { required: true })}
+                {...register('numeracion', { required: true })}
                 />
             </div>
             <button type="submit">FINALIZAR COMPRA</button>
