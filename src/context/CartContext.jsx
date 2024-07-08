@@ -1,11 +1,14 @@
+import { collection, getDocs } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
+import { db } from "../firebase/config";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({children}) =>{
 
- const [carrito, setCarrito] = useState([]);
-
+  const [carrito, setCarrito] = useState([]);
+  const [productos, setProductos] = useState(undefined);
+  const [marcas, setMarcas] = useState(undefined);
 
     const botonMenosCantidadCarrito = (producto) =>{
       
@@ -26,7 +29,33 @@ export const CartProvider = ({children}) =>{
         } 
       }
     }
-  
+
+  useEffect(() => {
+    const referenciaMarca = collection(db, "marcas")
+    
+    getDocs(referenciaMarca)
+    .then((res) => 
+      setMarcas(res.docs.map((doc) => 
+          {
+              return { ...doc.data(), id: doc.id }
+          }
+      ))
+  )
+  }, [])  
+
+  useEffect(() =>{
+    const productosRef = collection(db, "productos");
+
+    getDocs(productosRef)
+    .then((res) => 
+        setProductos(res.docs.map((doc) => 
+            {
+                return { ...doc.data(), id: doc.id }
+            }
+        ))
+    )
+  }, [])  
+
 
     const notificacionItemCargado = () => 
         Toastify({
@@ -81,7 +110,7 @@ export const CartProvider = ({children}) =>{
       }
 
     return(
-        <CartContext.Provider value={{carrito, botonMenosCantidadCarrito, setCarrito, guardarItemCarrito, actualizarPrecioTotal, actualizarCantidadCarrito}}>
+        <CartContext.Provider value={{productos, marcas, setProductos, carrito, botonMenosCantidadCarrito, setCarrito, guardarItemCarrito, actualizarPrecioTotal, actualizarCantidadCarrito}}>
             {children}
         </CartContext.Provider>
     )

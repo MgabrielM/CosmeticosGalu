@@ -22,8 +22,7 @@ export const Contacto = () => {
         {
           setConsultaId(res.id);
         }
-    ) 
-      
+    )       
 
     }
 

@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const CarritoDetalle = () => {
 
     let {carrito, actualizarPrecioTotal, guardarItemCarrito, botonMenosCantidadCarrito} = useContext(CartContext);
-
 
     const menosCantidadItem = (producto) =>{
       botonMenosCantidadCarrito(producto);
@@ -13,8 +12,13 @@ export const CarritoDetalle = () => {
   
     const masCantidadItem = (producto) =>{
       guardarItemCarrito(producto);
+    }    
+
+    const navigate = useNavigate();
+
+    const avanzarCompra = () => {
+      navigate("/informacionCompra");
     }
-    
 
   return (
     <div className='contenedor-carrito-detalle'>
@@ -50,7 +54,7 @@ export const CarritoDetalle = () => {
         </div>
             <div className='contenedor-botones'>
                 <Link to="../../productos">Seguir Comprando</Link>
-                <button className='carrito-boton'>Avanzar con la compra</button>
+                <button className='carrito-boton' onClick={avanzarCompra} >Avanzar con la compra</button>
             </div>
       </div>
     </div>
