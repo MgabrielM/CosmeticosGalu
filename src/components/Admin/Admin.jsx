@@ -1,11 +1,13 @@
-import { collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase/config';
+import { useForm } from 'react-hook-form';
 
 export const Admin = () => {
 
   let [pedidos, setPedidos] = useState([]);
   let [baseProductos, setBaseProductos] = useState([]);
+  const {register, handleSubmit} = useForm();
 
   useEffect(()=>{
 
@@ -27,18 +29,85 @@ export const Admin = () => {
 
   })
 
-  console.log(pedidos);
+  const agregarProducto = (item) =>{
+
+    console.log(item);
+
+    const cargarConsulta = collection(db, "productos");
+    addDoc(cargarConsulta, item)
+    .then((res) =>
+      {
+        console.log("Producto cargado con el ID: "+ res.id)
+      })
+  }
+
 
   return (
-    <div>
+    <div className='contenedor-creacion-productos'>
       <h4>Panel de gestion</h4>
       <div>
         <h5>Cargar productos</h5>
         <div>
-
+        <form className="formulario-ingreso-producto" onSubmit={handleSubmit(agregarProducto)}>
+            <div className="input-group">
+              <h6>Nombre de producto</h6>
+              <input
+                type="text"
+                {...register('nombre', { required: true })}
+              />
+            </div>
+            <div className="input-group">
+              <h6>ID producto</h6>
+              <input
+                type="number"
+                {...register('idProducto', { required: true })}
+              />
+            </div>
+            <div className="input-group">
+              <h6>Precio</h6>
+              <input
+                type="number"
+                {...register('precio', { required: true })}
+              />
+            </div>
+            <div className="input-group">
+              <h6>Marca</h6>
+              <input
+                type="text"
+                {...register('marca', { required: true })}
+              />
+            </div>
+            <div className="input-group">
+              <h6>Clasificación</h6>
+              <input
+                type="text"
+                {...register('clasificacion', { required: true })}
+              />
+              </div>
+              <div className="input-group">
+              <h6>Categoria</h6>
+              <input
+                type="text"
+                {...register('categoria', { required: true })}
+              />
+              </div>
+            <div className="input-group">
+              <h6>ID imagen</h6>
+              <input
+                type="number"
+                {...register('idImagen', { required: true })}
+              />
+            </div>
+            <div className="input-group">
+              <h6>Detalle</h6>
+              <textarea
+                {...register('detalle')}
+              />
+            </div>
+            <button type="submit">Agregar producto</button>
+          </form>
         </div>
       </div>
-
       <div>
       <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
@@ -51,18 +120,30 @@ export const Admin = () => {
       <div class="accordion-body">
       {pedidos.length > 0 ? 
       pedidos.map((pedido) => (
-        <div>
-          <p>
-            ID pedido
-            {pedido.id}
-          </p>
-          <p>
-            Total
-            {pedido.precioTotal}
-          </p>          
-        </div> 
-      )) 
-      
+      //   <div className='contenedor-productosDB'>
+      //     <p>
+      //       ID pedido
+      //       {pedido.id}
+      //     </p>
+      //     <p>
+      //       Items diferentes
+      //       {pedido.productos.length}
+      //     </p>
+      //     <p>
+      //       Total
+      //       {pedido.precioTotal}
+      //     </p> 
+      //     <p>
+      //       Total
+      //       {pedido.precioTotal}
+      //     </p>           
+      //   </div> 
+      // )) 
+        <div key={pedido.idProducto} className="product">
+            <p>ID pedido: {pedido.id}</p>
+            <p>Items diferentes: {pedido.productos.length}</p>
+            <p>Precio tota: ${pedido.precioTotal}</p>
+        </div>))
       : 
       <div class="spinner-border text-info" role="status">
           <span class="visually-hidden">Loading...</span>
@@ -80,25 +161,14 @@ export const Admin = () => {
       <div class="accordion-body">
       {baseProductos.length > 0 ? 
       baseProductos.map((prod) => (
-        <div>
-          <p>
-            Producto: 
-            {prod.idProducto}
-          </p>
-          <p>
-            Precio: 
-            {prod.precio}
-          </p>  
-          <p>
-            Categoria: 
-            {prod.categoria}
-          </p>
-          <p>
-            Marca:  
-            {prod.marca}
-          </p>        
-        </div> 
-      )) 
+        <div key={prod.idProducto} className="product">
+            <p>ID producto: {prod.idProducto}</p>
+            <p>Marca: {prod.marca}</p>
+            <p>Categoría: {prod.categoria}</p>
+            <p>Imagen: {prod.idImagen}</p>
+            <p>Precio: ${prod.precio}</p>
+        </div>
+    ))
       : 
       <div class="spinner-border text-info" role="status">
           <span class="visually-hidden">Loading...</span>

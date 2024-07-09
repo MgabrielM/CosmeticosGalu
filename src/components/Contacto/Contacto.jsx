@@ -36,7 +36,6 @@ export const Contacto = () => {
         ) : (
           <form className="formulario-compra" onSubmit={handleSubmit(comprar)}>
             <h5>¡Entra en contacto con nosotros!</h5>
-            <p></p>
             <div className="input-group">
               <h6>Nombre y apellido</h6>
               <input
